@@ -1,0 +1,12 @@
+{
+   "rewrites": [
+      {
+         "source": "/api/:path*",
+         "destination": "https://url-shortner-e7ea.onrender.com/api/:path*"
+      },
+      {
+         "source": "/:code",
+         "destination": "https://url-shortner-e7ea.onrender.com/:code"
+      }
+   ]
+}

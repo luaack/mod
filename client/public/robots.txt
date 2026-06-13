@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://make-link.vercel.app/sitemap.xml

@@ -1,0 +1,17 @@
+name: Keep Alive My URL Shortener
+
+on:
+  schedule:
+    - cron: "0 0 */4 * *"
+
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping My Backend Application
+        run: |
+          # *** REPLACE THIS WITH YOUR ACTUAL BACKEND SERVER URL ***
+          curl -sL "https://url-shortner-e7ea.onrender.com"
+          echo "Pinged backend at $(date)"
