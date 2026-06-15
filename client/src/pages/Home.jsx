@@ -50,7 +50,7 @@ const FAQItem = ({ question, answer }) => {
 
 const Home = () => {
   // Configuração do WhatsApp do profissional
-  const WHATSAPP_PHONE = "5511999999999"; // Substitua pelo seu número com DDD (apenas números)
+  const WHATSAPP_PHONE = "5561991551292"; // Número com DDD (apenas números)
 
   const [businessName, setBusinessName] = useState("");
   const [adBudget, setAdBudget] = useState("");
