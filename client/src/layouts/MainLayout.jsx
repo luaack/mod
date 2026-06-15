@@ -106,7 +106,7 @@ const MainLayout = ({ children }) => {
 
         <div className="max-w-7xl mx-auto px-4 md:px-12 mt-10 pt-8 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-300">
-            © 2026 MAKELINK STUDIOS
+            © 2026 MOD. STUDIOS
           </p>
           <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-300">
             EST. NO NORTE
