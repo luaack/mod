@@ -27,3 +27,6 @@ build/
 mock-db.json
 # Vídeos de referência (ex.: clay.com) — só para teste local, nunca publicar
 client/public/videos/_ref/
+
+# Quadros renderizados dos vídeos 3D
+tools/videos-3d/out/

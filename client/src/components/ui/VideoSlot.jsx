@@ -1,28 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 
-// Mostra o vídeo quando existe um `src`; até ele carregar (ou se não existir), mostra a ilustração `fallback`.
-// O vídeo só toca enquanto está visível na tela.
-const VideoSlot = ({ src, poster, fallback, className = "", label }) => {
+const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
+
+// Mostra o vídeo (WebM, com MP4 de reserva) e o poster enquanto carrega. Sem vídeo, mostra a ilustração `fallback`.
+// Em telas de até 767px usa `video.mobile`, se existir. O vídeo só toca enquanto está visível.
+const VideoSlot = ({ video, fallback, className = "", label }) => {
   const ref = useRef(null);
-  const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [source] = useState(() => (video?.mobile && isMobile() ? video.mobile : video));
+  const hasVideo = Boolean(source?.src || source?.webm) && !failed;
 
   useEffect(() => {
-    const video = ref.current;
-    if (!video || !src) return;
+    const el = ref.current;
+    if (!el || !hasVideo) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !reduced) video.play().catch(() => {});
-        else video.pause();
+        if (entry.isIntersecting && !reduced) el.play().catch(() => {});
+        else el.pause();
       },
       { threshold: 0.15 },
     );
-    observer.observe(video);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [src]);
-
-  const showVideo = src && !failed;
+  }, [hasVideo]);
 
   return (
     <div
@@ -30,21 +31,21 @@ const VideoSlot = ({ src, poster, fallback, className = "", label }) => {
       role={label ? "img" : undefined}
       aria-label={label}
     >
-      {(!showVideo || !ready) && <div className="absolute inset-0">{fallback}</div>}
-      {showVideo && (
+      {!hasVideo && <div className="absolute inset-0">{fallback}</div>}
+      {hasVideo && (
         <video
           ref={ref}
-          className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"}`}
-          src={src}
-          poster={poster || undefined}
+          className="absolute inset-0 size-full object-cover"
+          poster={source.poster || undefined}
           muted
           loop
           playsInline
           preload="metadata"
           aria-hidden
-          onLoadedData={() => setReady(true)}
-          onError={() => setFailed(true)}
-        />
+        >
+          {source.webm && <source src={source.webm} type="video/webm" onError={source.src ? undefined : () => setFailed(true)} />}
+          {source.src && <source src={source.src} type="video/mp4" onError={() => setFailed(true)} />}
+        </video>
       )}
     </div>
   );

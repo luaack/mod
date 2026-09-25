@@ -1,6 +1,8 @@
 # Pensamento de Vídeo: vídeos claymation do site da Mod.
 
-Documento de produção dos 7 vídeos em loop do site. Enquanto eles não existem, o site mostra ilustrações no mesmo lugar, e as imagens em `briefing/referencias/` mostram a composição de cada espaço.
+> **Situação atual:** o site já usa vídeos 3D próprios, feitos em código e renderizados por `tools/videos-3d` (veja o README de lá). Este documento continua valendo se quiser **substituí-los por vídeos gerados com IA**. Basta manter os mesmos nomes de arquivo e formatos.
+
+Documento de produção dos 7 vídeos em loop do site. As imagens em `briefing/referencias/` mostram a composição de cada espaço.
 
 > **Regra do projeto:** não use, copie nem "referencie por nome" vídeos de outras marcas. Os prompts abaixo descrevem uma estética de massinha genérica. O mundo, os objetos e as cores são da Mod.
 

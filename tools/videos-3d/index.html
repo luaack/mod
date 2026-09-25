@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">
+{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}
+</script>
+</head>
+<body>
+<script type="module">
+import { createStudio } from './lib/studio.js';
+const q = new URLSearchParams(location.search);
+const w = +q.get('w'), h = +q.get('h'), fps = +q.get('fps') || 15;
+const variant = q.get('variant') || '';
+const mod = await import(`./scenes/${q.get('scene')}.js`);
+const studio = createStudio({ width: w, height: h });
+const update = await mod.build(studio, { variant });
+window.T = mod.T;
+window.frame = (i) => {
+  update(((i / fps) % mod.T + mod.T) % mod.T);
+  studio.render();
+  return studio.renderer.domElement.toDataURL('image/png');
+};
+window.ready = true;
+</script>
+</body>
+</html>

@@ -22,8 +22,8 @@ Stack: React 19 + Vite 7, Tailwind CSS v4, Framer Motion, Lenis (rolagem suave).
   - `contact.instagram`: preenchido, o link aparece no rodapé.
   - `brands[].logo`: caminho do logo (ex.: `/logos/bns.svg` em `client/public/logos/`). Sem logo, aparece um tratamento tipográfico.
   - `about.person.photo`: foto do Lucas (ex.: `/lucas.jpg`).
-- **Vídeos:** coloque os MP4 em `client/public/videos/` e preencha `videos` em `content.js`. Sem vídeo, cada espaço mostra uma ilustração em SVG (`client/src/components/scenes/`).
-- **Prompts para gerar os vídeos com IA:** `briefing/videos-claymation.md` (com referências de composição em `briefing/referencias/`).
+- **Vídeos:** ficam em `client/public/videos/` (WebM + MP4 + poster JPG, e versão vertical da hero para o celular) e são configurados em `videos` no `content.js`. São cenas 3D de massinha geradas por `tools/videos-3d`, onde dá para editar e renderizar de novo. Sem vídeo, cada espaço mostra uma ilustração em SVG (`client/src/components/scenes/`).
+- **Prompts para gerar vídeos com IA (alternativa):** `briefing/videos-claymation.md`.
 - **Cores e fonte:** `client/src/index.css` (`@theme`). A fonte é a Satoshi (Fontshare), com a Onest embutida como reserva.
 
 ## Estrutura

@@ -12,16 +12,19 @@ export const contact = {
   agendaMessage: "Olá, Lucas! Vim pelo site da Mod. e quero agendar uma call de diagnóstico.",
 };
 
-// Vídeos próprios (MP4 H.264) em /public/videos. Deixe null para usar a ilustração no lugar.
-// Veja briefing/videos-claymation.md para os prompts de cada vídeo.
+// Vídeos em /public/videos: WebM (leve) com MP4 de reserva para o Safari antigo, e poster JPG.
+// `mobile` é a versão usada em telas de até 767px. Troque por null para mostrar a ilustração no lugar.
+// Os vídeos atuais são renders 3D gerados por tools/videos-3d (dá para editar as cenas e renderizar de novo).
+const video = (name) => ({ src: `/videos/${name}.mp4`, webm: `/videos/${name}.webm`, poster: `/videos/${name}.jpg` });
+
 export const videos = {
-  hero: { src: null, poster: null },
-  atrair: { src: null, poster: null },
-  converter: { src: null, poster: null },
-  presenca: { src: null, poster: null },
-  crescer: { src: null, poster: null },
-  sistema: { src: null, poster: null },
-  final: { src: null, poster: null },
+  hero: null, // em renderização: { ...video("hero"), mobile: video("hero-mobile") }
+  atrair: video("atrair"),
+  converter: video("converter"),
+  presenca: video("presenca"),
+  crescer: video("crescer"),
+  sistema: null, // em renderização: video("sistema")
+  final: null, // em renderização: video("final")
 };
 
 export const nav = [

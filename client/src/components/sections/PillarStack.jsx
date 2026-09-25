@@ -13,7 +13,6 @@ const STEP = 18; // quanto de cada card anterior continua aparecendo
 const PillarCard = ({ pillar, index, total, progress }) => {
   // O card encolhe um pouco à medida que os próximos passam por cima dele.
   const scale = useTransform(progress, [index / total, 1], [1, 1 - (total - 1 - index) * 0.035]);
-  const video = videos[pillar.id];
 
   return (
     <div className="md:sticky" style={{ top: HEADER + index * STEP }}>
@@ -53,8 +52,7 @@ const PillarCard = ({ pillar, index, total, progress }) => {
         </div>
 
         <VideoSlot
-          src={video.src}
-          poster={video.poster}
+          video={videos[pillar.id]}
           fallback={<PillarScene shape={pillar.shape} color={pillar.sceneColor} id={`p-${pillar.id}`} />}
           className="aspect-[5/5.4] rounded-[24px] bg-sand md:aspect-auto md:min-h-[520px]"
         />
