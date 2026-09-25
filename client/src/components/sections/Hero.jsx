@@ -14,7 +14,7 @@ const rise = (delay) => ({
 
 const Hero = () => (
   <section id="top" className="relative isolate overflow-hidden pb-40 md:min-h-[max(820px,100svh)] md:pb-0">
-    <VideoSlot src={videos.hero.src} poster={videos.hero.poster} fallback={<ClayWorld />} className="absolute inset-0 -z-10" />
+    <VideoSlot video={videos.hero} fallback={<ClayWorld />} className="absolute inset-0 -z-10" />
     {/* contraste para o texto branco e transição para o branco da página */}
     <div className="absolute inset-0 -z-10 bg-[radial-gradient(90%_60%_at_20%_70%,rgba(0,40,20,0.35),transparent_70%)]" />
     <div className="absolute inset-x-0 bottom-0 -z-10 h-[34%] bg-gradient-to-b from-transparent to-white" />

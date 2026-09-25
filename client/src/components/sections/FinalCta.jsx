@@ -53,7 +53,7 @@ const FinalCta = () => (
     </div>
 
     <div className="relative mt-4 overflow-hidden pt-[260px] md:pt-[360px]">
-      <VideoSlot src={videos.final.src} poster={videos.final.poster} fallback={<BallPit />} className="absolute inset-0" />
+      <VideoSlot video={videos.final} fallback={<BallPit />} className="absolute inset-0" />
 
       <div className="relative mx-3 mb-3 md:mx-auto md:mb-8 md:max-w-[1100px]">
         <div className="rounded-[28px] bg-mist/95 p-6 backdrop-blur md:p-10">

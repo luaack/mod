@@ -31,10 +31,9 @@ const StrategySection = () => (
         </div>
       </div>
       <VideoSlot
-        src={videos.sistema.src}
-        poster={videos.sistema.poster}
+        video={videos.sistema}
         fallback={<SystemScene />}
-        className="mt-8 aspect-[4/3] rounded-[24px] bg-sand sm:aspect-[16/8] md:mt-10 md:aspect-[16/7]"
+        className="mt-8 aspect-[16/9] rounded-[24px] bg-sand sm:aspect-[16/8] md:mt-10 md:aspect-[16/7]"
       />
     </Reveal>
   </section>

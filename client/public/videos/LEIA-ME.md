@@ -1,7 +1,13 @@
 # Vídeos do site
 
-Coloque aqui os vídeos próprios da Mod. (MP4 H.264) e os posters (JPG), e preencha os caminhos em `src/content.js` → `videos`.
+Cada espaço de vídeo tem três arquivos com o mesmo nome:
 
-Nomes sugeridos: `hero.mp4`, `atrair.mp4`, `converter.mp4`, `presenca.mp4`, `crescer.mp4`, `sistema.mp4`, `final.mp4` (+ `.jpg` com o mesmo nome para o poster).
+- `<nome>.webm`: versão principal, mais leve.
+- `<nome>.mp4`: reserva para navegadores sem WebM (Safari antigo).
+- `<nome>.jpg`: poster, exibido enquanto o vídeo carrega.
 
-A pasta `_ref/` é ignorada pelo git: use-a só para testar vídeos de referência no seu computador. Nunca publique vídeos de terceiros.
+Nomes: `hero` (e `hero-mobile`, a versão vertical para o celular), `atrair`, `converter`, `presenca`, `crescer`, `sistema` e `final`. Os caminhos ficam em `src/content.js` → `videos`.
+
+Os vídeos atuais são renders 3D gerados por `tools/videos-3d`. Para trocar por outros, mantenha os mesmos nomes e formatos.
+
+Nunca publique vídeos de terceiros. A pasta `_ref/` é ignorada pelo git e serve só para testes locais.
