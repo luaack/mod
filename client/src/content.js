@@ -18,7 +18,7 @@ export const contact = {
 const video = (name) => ({ src: `/videos/${name}.mp4`, webm: `/videos/${name}.webm`, poster: `/videos/${name}.jpg` });
 
 export const videos = {
-  hero: null, // em renderização: { ...video("hero"), mobile: video("hero-mobile") }
+  hero: video("hero"), // versão vertical do celular em renderização: { ...video("hero"), mobile: video("hero-mobile") }
   atrair: video("atrair"),
   converter: video("converter"),
   presenca: video("presenca"),
