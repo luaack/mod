@@ -6,7 +6,7 @@ export const contact = {
   whatsappLabel: "(61) 99155-1292",
   // Link da página de agendamento do Google Agenda.
   // Enquanto estiver vazio, os botões de agendamento abrem o WhatsApp pedindo um horário.
-  agendaUrl: "",
+  agendaUrl: "https://calendar.app.google/zZbpdLBNiG75ej5k9",
   instagram: "", // ex.: "https://instagram.com/seuperfil"
   defaultMessage: "Olá, Lucas! Vim pelo site da Mod. e quero conversar sobre o marketing do meu negócio.",
   agendaMessage: "Olá, Lucas! Vim pelo site da Mod. e quero agendar uma call de diagnóstico.",
