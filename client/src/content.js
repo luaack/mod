@@ -23,7 +23,7 @@ export const videos = {
   converter: video("converter"),
   presenca: video("presenca"),
   crescer: video("crescer"),
-  sistema: null, // em renderização: video("sistema")
+  sistema: video("sistema"),
   final: null, // em renderização: video("final")
 };
 
