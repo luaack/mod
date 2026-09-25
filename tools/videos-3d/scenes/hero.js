@@ -163,7 +163,8 @@ function hill(color, sx, sy, sz, seed = 3) {
 export function build(studio, { variant }) {
   const mobile = variant === 'mobile';
   const { scene, camera, key, hemi, fill } = studio;
-  const X = mobile ? 0.6 : 1; // no celular os objetos ficam mais juntos
+  const X = mobile ? 0.5 : 1; // no celular os objetos ficam mais juntos (o site corta as laterais do vídeo)
+  const P = mobile ? { phone: -3.7, shop: -1.25, box: 1.55, chart: 3.85 } : { phone: -7.4, shop: -2.3, box: 3.8, chart: 9.4 };
 
   scene.background = skyTexture([
     [0, '#5cc9df'],
@@ -252,12 +253,12 @@ export function build(studio, { variant }) {
 
   // ------- objetos -------
   const ph = phone();
-  ph.position.set(-7.4 * X, 4.4, -5);
+  ph.position.set(P.phone, 4.4, -5);
   ph.rotation.set(0, 0.35, -0.12);
   scene.add(ph);
 
   const sh = shop();
-  sh.position.set(-2.3 * X, 1.95, -7.4);
+  sh.position.set(P.shop, 1.95, -7.4);
   sh.scale.setScalar(1.15);
   sh.rotation.y = -0.12;
   scene.add(sh);
@@ -278,7 +279,7 @@ export function build(studio, { variant }) {
   scene.add(post);
 
   const box = deliveryBox();
-  box.position.set(3.8 * X, 2.25, -10.5);
+  box.position.set(P.box, 2.25, -10.5);
   box.scale.setScalar(1.2);
   box.rotation.y = -0.35;
   scene.add(box);
@@ -293,7 +294,7 @@ export function build(studio, { variant }) {
 
   // gráfico de barras
   const chart = new THREE.Group();
-  chart.position.set(9.4 * X, 1.75, -8.5);
+  chart.position.set(P.chart, 1.75, -8.5);
   chart.scale.setScalar(1.15);
   chart.rotation.y = -0.4;
   scene.add(chart);
