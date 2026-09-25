@@ -25,3 +25,5 @@ build/
 # Local Database
 *mock-db.json
 mock-db.json
+# Vídeos de referência (ex.: clay.com) — só para teste local, nunca publicar
+client/public/videos/_ref/

@@ -1,36 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
-import MainLayout from "./layouts/MainLayout";
-import Home from "./pages/Home";
-import BootScreen from "./components/BootScreen";
+import { useEffect } from "react";
+import { MotionConfig } from "framer-motion";
+import Lenis from "lenis";
+import Header from "./components/sections/Header";
+import Hero from "./components/sections/Hero";
+import SocialProof from "./components/sections/SocialProof";
+import ServicesTabs from "./components/sections/ServicesTabs";
+import PromptBox from "./components/sections/PromptBox";
+import PillarStack from "./components/sections/PillarStack";
+import StrategySection from "./components/sections/StrategySection";
+import BrandsCarousel from "./components/sections/BrandsCarousel";
+import AboutBento from "./components/sections/AboutBento";
+import FinalCta from "./components/sections/FinalCta";
 
 const App = () => {
-  const [isBooting, setIsBooting] = useState(true);
-
+  // Rolagem suave (desligada para quem prefere menos movimento).
   useEffect(() => {
-    const hasBooted = sessionStorage.getItem("hasBooted");
-    if (hasBooted) {
-      setIsBooting(false);
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const lenis = new Lenis({ autoRaf: true, anchors: { offset: -96 } });
+    return () => lenis.destroy();
   }, []);
 
-  const handleBootComplete = () => {
-    sessionStorage.setItem("hasBooted", "true");
-    setIsBooting(false);
-  };
-
   return (
-    <>
-      <AnimatePresence>
-        {isBooting && <BootScreen onComplete={handleBootComplete} />}
-      </AnimatePresence>
-
-      {!isBooting && (
-        <MainLayout>
-          <Home />
-        </MainLayout>
-      )}
-    </>
+    <MotionConfig reducedMotion="user">
+      <Header />
+      <main>
+        <Hero />
+        <SocialProof />
+        <ServicesTabs />
+        <PromptBox />
+        <PillarStack />
+        <StrategySection />
+        <BrandsCarousel />
+        <AboutBento />
+      </main>
+      <FinalCta />
+    </MotionConfig>
   );
 };
 

@@ -1,56 +1,136 @@
+@import "@fontsource-variable/onest";
 @import "tailwindcss";
 
+/* Tokens medidos na referência (clay.com) e adaptados para a Mod. */
 @theme {
-  --color-primary: #000000;
-  --color-border: #000000;
-  --color-muted: #737373;
-}
+  --font-sans: "Satoshi", "Onest Variable", ui-sans-serif, system-ui, sans-serif;
 
-:root {
-  font-family: "Inter", system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #000000;
-  scroll-behavior: smooth;
-}
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+  --color-mist: #f3f3f1;
+  --color-line: #e7e7e3;
+  --color-muted: #6b6b66;
+  --color-plum: #41002e;
+  --color-lime: #d4f23a;
+  --color-gold: #f7c948;
+  --color-sand: #f0e7d8;
+  --color-sky: #88e6ee;
+  --color-hill: #085a39;
 
-/* Prevent mobile horizontal overflow */
-body {
-  margin: 0;
-  overflow-x: hidden;
-  width: 100%;
-}
+  --color-blue: #3d4bff;
+  --color-blue-tint: #f0f9ff;
+  --color-orange: #e8490f;
+  --color-orange-tint: #fff2ea;
+  --color-green: #4f8f0a;
+  --color-green-tint: #f6fbe4;
+  --color-pink: #c8129f;
+  --color-pink-tint: #fdedf8;
+  --color-teal: #1a9c98;
+  --color-lilac: #b9a6ff;
 
-/* Fluid Brutalist UI */
-.input-brutalist {
-  @apply w-full px-4 md:px-6 py-4 md:py-5 bg-white border-2 border-black rounded-none
-         focus:outline-none focus:ring-4 focus:ring-neutral-100 transition-all
-         placeholder:text-neutral-300 font-bold text-base md:text-lg;
-}
+  --radius-card: 28px;
 
-.btn-brutalist {
-  @apply px-6 md:px-10 py-4 md:py-5 bg-black text-white font-black uppercase tracking-widest
-         rounded-none hover:bg-neutral-800 active:translate-y-1 transition-all
-         disabled:bg-neutral-300 flex items-center justify-center gap-3 text-sm md:text-base;
-}
-
-.section-padding {
-  @apply py-16 md:py-32 px-4 md:px-12;
-}
-.max-width {
-  @apply max-w-7xl mx-auto;
+  --animate-marquee: marquee var(--marquee-duration, 60s) linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-blink: blink 1s step-end infinite;
 }
 
 @keyframes marquee {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 45s linear infinite;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes playhead {
+  from {
+    left: 12%;
+  }
+  to {
+    left: 97%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@layer components {
+  .container-mod {
+    @apply mx-auto w-full max-w-[1120px] px-5 md:px-8;
+  }
+
+  .display {
+    @apply font-medium tracking-[-0.035em] leading-[1.02];
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em];
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
